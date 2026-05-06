@@ -34,6 +34,13 @@ export default function ContactClient() {
 
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
+  const trackWhatsAppClick = () => {
+    // Log event for analytics
+    console.log("WhatsApp CTA Clicked");
+    // If Gtag is present:
+    // window.gtag('event', 'whatsapp_click', { 'event_category': 'engagement' });
+  };
+
   const onSubmit = (data: Record<string, any>) => {
     console.log("Contact Data:", data);
     alert("Message sent successfully! Our team will get back to you shortly.");
@@ -146,12 +153,22 @@ export default function ContactClient() {
                 </div>
 
                 <div className="flex gap-4">
-                   <Button className="flex-1 bg-green-500 hover:bg-green-600 text-white rounded-2xl py-6 font-black uppercase tracking-widest shadow-lg" asChild>
+                   <Button className="flex-1 bg-green-500 hover:bg-green-600 text-white rounded-2xl py-6 font-black uppercase tracking-widest shadow-lg" onClick={trackWhatsAppClick} asChild>
                       <a href="https://wa.me/917358961021" target="_blank" rel="noopener noreferrer"><MessageSquare className="w-5 h-5 mr-3" /> WhatsApp</a>
                    </Button>
                    <Button variant="outline" className="flex-1 border-gray-200 text-gray-700 rounded-2xl py-6 font-black uppercase tracking-widest hover:border-brand-purple" asChild>
                       <a href="tel:+917358961021"><Phone className="w-5 h-5 mr-3" /> Call Us</a>
                    </Button>
+                </div>
+
+                <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
+                  <h3 className="text-sm font-black text-brand-purple uppercase tracking-widest mb-4">Our Registered Office</h3>
+                  <p className="text-gray-600 font-medium leading-relaxed">
+                    Aadhav Health Support,<br />
+                    D No 32 Alagiya Thruchitramb,<br />
+                    Sundakkamuthur,<br />
+                    Coimbatore, Tamil Nadu - 641010
+                  </p>
                 </div>
 
                 <div className="rounded-[2.5rem] overflow-hidden border-8 border-gray-50 h-[350px] shadow-2xl relative group">

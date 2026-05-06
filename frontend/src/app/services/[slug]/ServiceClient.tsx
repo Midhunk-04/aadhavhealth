@@ -37,6 +37,35 @@ export default function ServiceClient({ service }: { service: { title: string, t
 
   return (
     <div ref={containerRef} className="min-h-screen bg-white overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aadhavhealthsupport.in"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Services",
+                "item": "https://aadhavhealthsupport.in/services"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": service.title,
+                "item": `https://aadhavhealthsupport.in/services/${service.title.toLowerCase().replace(/ /g, "-")}`
+              }
+            ]
+          })
+        }}
+      />
       {/* Hero Section */}
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden pt-20 bg-brand-purple">
         <motion.div style={{ y: heroY }} className="absolute inset-0 opacity-40">

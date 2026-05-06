@@ -68,12 +68,41 @@ export const metadata: Metadata = {
     description: "Expert home nursing and elderly care services in Coimbatore.",
     images: ["/assets/hero-bg.png"],
   },
+  alternates: {
+    canonical: "https://aadhavhealthsupport.in",
+    languages: {
+      "en-IN": "https://aadhavhealthsupport.in",
+      "ta-IN": "https://aadhavhealthsupport.in/ta",
+    },
+  },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: "provide-your-google-verification-code-here",
+  },
+  icons: {
+    icon: [
+      { url: '/assets/favicon.png?v=3', sizes: '48x48', type: 'image/png' },
+      { url: '/assets/favicon.png?v=3', sizes: '96x96', type: 'image/png' },
+      { url: '/assets/favicon.png?v=3', sizes: '144x144', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/assets/favicon.png?v=3', sizes: '180x180', type: 'image/png' },
+    ],
   },
 };
 
+
+import { Preloader } from "@/components/shared/Preloader";
 
 export default function RootLayout({
   children,
@@ -83,9 +112,96 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("scroll-smooth", playfair.variable, inter.variable)}>
       <body className={cn("min-h-screen bg-background font-inter antialiased text-foreground")}>
+        <Preloader />
         <LenisProvider>
           <Navbar />
           <main className="min-h-screen pt-20">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "LocalBusiness",
+                  "name": "Aadhav Health Support",
+                  "image": "https://aadhavhealthsupport.in/assets/logo-transparent.png",
+                  "@id": "https://aadhavhealthsupport.in",
+                  "url": "https://aadhavhealthsupport.in",
+                  "telephone": "+917358961021",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "D No 32 Alagiya Thruchitramb, Guvra Homes PT Colony, Sundakkamuthur, Perur Chettipalayam",
+                    "addressLocality": "Coimbatore",
+                    "postalCode": "641010",
+                    "addressRegion": "TN",
+                    "addressCountry": "IN"
+                  },
+                  "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": 10.9575,
+                    "longitude": 76.9234
+                  },
+                  "openingHoursSpecification": {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                      "Saturday",
+                      "Sunday"
+                    ],
+                    "opens": "00:00",
+                    "closes": "23:59"
+                  },
+                  "sameAs": [
+                    "https://www.facebook.com/share/p/1aYCvcYdtZ/",
+                    "https://www.instagram.com/aadhavhealthsupport?igsh=OHNmcGhzN25rNzBm"
+                  ]
+                })
+              }}
+            />
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "BreadcrumbList",
+                  "itemListElement": [
+                    {
+                      "@type": "ListItem",
+                      "position": 1,
+                      "name": "Home",
+                      "item": "https://aadhavhealthsupport.in"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 2,
+                      "name": "Services",
+                      "item": "https://aadhavhealthsupport.in/services"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 3,
+                      "name": "Pricing",
+                      "item": "https://aadhavhealthsupport.in/pricing"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 4,
+                      "name": "About",
+                      "item": "https://aadhavhealthsupport.in/about"
+                    },
+                    {
+                      "@type": "ListItem",
+                      "position": 5,
+                      "name": "Contact",
+                      "item": "https://aadhavhealthsupport.in/contact"
+                    }
+                  ]
+                })
+              }}
+            />
             {children}
           </main>
           <Footer />

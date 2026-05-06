@@ -73,7 +73,7 @@ export default function AboutClient() {
                 transition={{ delay: 0.4 }}
                 className="text-lg text-gray-600 leading-relaxed mb-8"
               >
-                Aadhav Health Support was established in Coimbatore with a simple yet powerful mission: to redefine home healthcare through a perfect blend of **unmatched professionalism** and **heartfelt empathy**.
+                Aadhav Health Support was established in Coimbatore with a simple yet powerful mission: to redefine home healthcare through a perfect blend of <strong className="font-bold text-gray-800">unmatched professionalism</strong> and <strong className="font-bold text-gray-800">heartfelt empathy</strong>.
               </motion.p>
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -94,7 +94,7 @@ export default function AboutClient() {
               viewport={{ once: true }}
               className="md:w-1/2 relative"
             >
-              <img src="/assets/why-us.png" alt="Aadhav Care Team Coimbatore" className="rounded-[3rem] shadow-2xl w-full" />
+              <img src="/assets/why-us.png" alt="Aadhav Health Support Care Team - Providing Compassionate Care in Coimbatore" className="rounded-[3rem] shadow-2xl w-full" loading="lazy" decoding="async" />
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-teal/20 rounded-full blur-3xl" />
             </motion.div>
           </div>
@@ -175,7 +175,7 @@ export default function AboutClient() {
               className="md:w-1/2"
             >
               <div className="relative">
-                <img src="/assets/team.png" alt="Aadhav Health Support Professional Team" className="rounded-[3rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" />
+                <img src="/assets/team.png" alt="Aadhav Health Support Professional Team" className="rounded-[3rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-brand-purple/20 rounded-[3rem] mix-blend-overlay pointer-events-none" />
               </div>
             </motion.div>

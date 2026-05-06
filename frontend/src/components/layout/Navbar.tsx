@@ -55,9 +55,9 @@ export function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center z-50">
               <img 
-                src="/assets/logo.png" 
-                alt="Aadhav Health Support" 
-                className="h-8 md:h-10 w-auto object-contain mix-blend-multiply"
+                src="/assets/logo-transparent.png" 
+                alt="Aadhav Health Support - Leading Home Care and Nursing Services in Coimbatore" 
+                className="h-14 md:h-16 w-auto object-contain"
               />
             </Link>
 

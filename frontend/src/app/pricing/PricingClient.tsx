@@ -197,6 +197,49 @@ export default function PricingClient() {
           </div>
         </div>
 
+        {/* Detailed Price Table Section - HIGH SEO VALUE */}
+        <div className="mb-20">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-[1px] flex-grow bg-gray-200"></div>
+            <h2 className="text-2xl font-playfair font-black text-brand-purple uppercase tracking-tight px-6 py-2 bg-white rounded-full shadow-sm border border-gray-100">
+              Detailed Service Rates
+            </h2>
+            <div className="h-[1px] flex-grow bg-gray-200"></div>
+          </div>
+
+          <div className="bg-white rounded-[2.5rem] shadow-xl border border-gray-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-brand-purple text-white">
+                    <th className="p-6 font-black uppercase tracking-widest text-[10px]">Service Type</th>
+                    <th className="p-6 font-black uppercase tracking-widest text-[10px]">Tamil Name</th>
+                    <th className="p-6 font-black uppercase tracking-widest text-[10px]">Timing / Session</th>
+                    <th className="p-6 font-black uppercase tracking-widest text-[10px]">Approx. Rate</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {[
+                    { cat: "Elderly Care", tam: "முதியோர் பராமரிப்பு", time: "12 Hours", rate: "₹800 - ₹1,200" },
+                    { cat: "Elderly Care", tam: "முதியோர் பராமரிப்பு", time: "24 Hours (Stay-in)", rate: "₹18,000 - ₹25,000 / month" },
+                    { cat: "Patient Care", tam: "நோயாளி பராமரிப்பு", time: "12 Hours", rate: "₹900 - ₹1,300" },
+                    { cat: "Nursing (Injection)", tam: "நர்சிங் சேவை", time: "Per Visit", rate: "₹150 - ₹300" },
+                    { cat: "Physiotherapy", tam: "பிசியோதெரபி", time: "Per Session", rate: "₹500 - ₹1,200" },
+                    { cat: "Doctor Visit", tam: "மருத்துவர் வருகை", time: "Per Visit", rate: "₹500 - ₹1,500" },
+                  ].map((row, i) => (
+                    <tr key={i} className="hover:bg-gray-50 transition-colors">
+                      <td className="p-6 text-sm font-bold text-gray-900">{row.cat}</td>
+                      <td className="p-6 text-xs font-bold text-brand-teal">{row.tam}</td>
+                      <td className="p-6 text-xs font-medium text-gray-500">{row.time}</td>
+                      <td className="p-6 text-sm font-black text-brand-purple">{row.rate}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
         {/* Extra Charges Grid */}
         <div className="mb-20 bg-brand-purple rounded-[3rem] p-12 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 p-8 opacity-10">

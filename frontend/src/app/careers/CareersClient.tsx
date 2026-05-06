@@ -24,15 +24,23 @@ const roles = [
     textColor: "text-indigo-600"
   },
   {
-    title: "Child Care",
-    tamil: "குழந்தைகள் கவனிப்பு",
+    title: "Patient Care Specialist",
+    tamil: "நோயாளி பராமரிப்பு",
+    icon: <Briefcase className="w-8 h-8" />,
+    tasks: ["Bedside Care", "Vital Monitoring", "Post-Surgery Support", "Feeding Help"],
+    color: "bg-blue-50",
+    textColor: "text-blue-600"
+  },
+  {
+    title: "Newborn & Mother Care",
+    tamil: "குழந்தை மற்றும் தாய் கவனிப்பு",
     icon: <HeartHandshake className="w-8 h-8" />,
-    tasks: ["Feeding & Bathing", "Bed Care", "Playtime", "Safe Monitoring"],
+    tasks: ["Baby Massage", "Bathing Support", "Mother Recovery", "Safe Monitoring"],
     color: "bg-pink-50",
     textColor: "text-pink-600"
   },
   {
-    title: "Home Nurse",
+    title: "Home Nurse (Staff Nurse)",
     tamil: "ஹோம் நர்ஸ்",
     icon: <Stethoscope className="w-8 h-8" />,
     tasks: ["Injection / IV Drip", "Wound Dressing", "Catheter Care", "BP / Sugar Check"],

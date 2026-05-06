@@ -41,7 +41,7 @@ export default function ServicesClient() {
       {/* Hero Section */}
       <section className="relative h-[50vh] flex items-center justify-center overflow-hidden pt-20 bg-brand-purple">
         <motion.div style={{ y: heroY }} className="absolute inset-0 opacity-20">
-          <img src="/assets/medical-pattern.png" alt="Medical Patterns Coimbatore" className="w-full h-full object-cover" />
+          <img src="/assets/medical-pattern.png" alt="Medical Patterns Coimbatore" className="w-full h-full object-cover" decoding="async" />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/50 to-brand-purple" />
         
@@ -57,7 +57,7 @@ export default function ServicesClient() {
               </h1>
             </RevealText>
             <p className="text-brand-lavender text-lg md:text-2xl max-w-2xl mx-auto font-light italic">
-              &quot;Professional Home Care Services in Coimbatore | Care with Trust.&quot;
+              &quot;Professional Home Care Services in Coimbatore | Expert Medical Support at Your Doorstep.&quot;
             </p>
           </motion.div>
         </div>
@@ -108,7 +108,7 @@ export default function ServicesClient() {
                 className="bg-white rounded-[2.5rem] p-1 shadow-xl border border-gray-100 flex flex-col group overflow-hidden"
               >
                 <div className="relative h-64 overflow-hidden rounded-[2.2rem]">
-                  <img src={service.image} alt={`${service.title} Coimbatore Home Care`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={service.image} alt={`${service.title} - ${service.tamilTitle} Services in Coimbatore`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" />
                   <div className="absolute top-4 right-4">
                     <span className={cn(
                       "text-[10px] font-black uppercase tracking-widest px-4 py-2 rounded-full backdrop-blur-md border border-white/20",
@@ -141,6 +141,16 @@ export default function ServicesClient() {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* SEO Text Block */}
+      <section className="py-24 bg-gray-50/50">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-2xl font-black font-playfair text-brand-purple mb-6 uppercase tracking-tight">Best Home Nursing & Elderly Care in Coimbatore</h2>
+          <p className="text-sm text-gray-500 leading-relaxed font-medium">
+            At Aadhav Health Support, we offer a wide range of <strong className="font-bold text-gray-800">healthcare services at home in Coimbatore</strong>. From <strong className="font-bold text-gray-800">elderly assistance</strong> to <strong className="font-bold text-gray-800">skilled nursing care</strong>, our team is equipped to handle complex medical needs with compassion. Our team consists of verified, trained, and highly experienced <strong className="font-bold text-gray-800">home nurses in Coimbatore</strong>, physiotherapists, and caregivers. Each member is selected not just for their medical skills, but for their heart. We are proud to be a top-rated <strong className="font-bold text-gray-800">nursing bureau in Coimbatore</strong> providing specialized care. Whether you are in Peelamedu, RS Puram, or Saravanampatti, our <strong className="font-bold text-gray-800">home visit doctors</strong> and nurses are just a call away.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

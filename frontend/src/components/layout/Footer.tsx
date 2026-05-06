@@ -9,25 +9,22 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="bg-white/90 inline-block p-4 rounded-2xl mb-4">
-              <img 
-                src="/assets/logo.png" 
-                alt="Aadhav Health Support" 
-                className="h-16 md:h-20 w-auto object-contain"
+            <div className="inline-block mb-6">
+              <img
+                src="/assets/logo-transparent.png"
+                alt="Aadhav Health Support - Professional Home Nursing & Caregiver Services in Coimbatore"
+                className="h-16 md:h-20 w-auto object-contain brightness-0 invert opacity-90"
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Providing professional home care services with trust, compassion, and care in Coimbatore since 2024.
             </p>
             <div className="flex gap-4 pt-2">
-              <a href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
+              <a href="https://www.facebook.com/share/p/1aYCvcYdtZ/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-teal transition-colors" aria-label="Facebook">
                 <FaFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
+              <a href="https://www.instagram.com/aadhavhealthsupport?igsh=OHNmcGhzN25rNzBm" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-teal transition-colors" aria-label="Instagram">
                 <FaInstagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-brand-teal transition-colors">
-                <FaTwitter className="w-5 h-5" />
               </a>
             </div>
           </div>

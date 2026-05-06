@@ -6,8 +6,8 @@ export const services = [
     title: "Elderly Care",
     tamilTitle: "முதியோர் பராமரிப்பு",
     category: "Non-Medical",
-    shortDesc: "Compassionate support and assistance for seniors at home.",
-    longDesc: "Our elderly care services are designed to help seniors live safely and comfortably at home. We provide assistance with daily activities, medication reminders, companionship, and mobility support. (முதியோர் பராமரிப்பு சேவைகள் - தினசரி உதவி, மருந்து நினைவூட்டல், மற்றும் பாதுகாப்பு).",
+    shortDesc: "Compassionate support and assistance for seniors at home in Coimbatore.",
+    longDesc: "Aadhav Health Support offers the best elderly care services in Coimbatore, designed to help seniors live safely and comfortably at home. Our caregivers provide assistance with daily activities, medication reminders, companionship, and mobility support. (முதியோர் பராமரிப்பு சேவைகள் - தினசரி உதவி, மருந்து நினைவூட்டல், மற்றும் பாதுகாப்பு).",
     features: [
       "Bathing, dressing, and grooming (குளியல் மற்றும் உடை உதவி)",
       "Medication reminders (மருந்து நினைவூட்டல்)",
@@ -26,8 +26,8 @@ export const services = [
     title: "Patient Care",
     tamilTitle: "நோயாளி பராமரிப்பு",
     category: "Non-Medical",
-    shortDesc: "Professional monitoring and care for recovering patients.",
-    longDesc: "Our patient care services are designed for individuals recovering from surgery, injury, or chronic illness. (நோயாளி பராமரிப்பு - சாப்பாடு கொடுத்தல், குளியல் உதவி, மற்றும் அசைவில் உதவி).",
+    shortDesc: "Professional monitoring and patient care services in Coimbatore.",
+    longDesc: "Our patient care services in Coimbatore are designed for individuals recovering from surgery, injury, or chronic illness. We provide 24/7 bedside support and medical monitoring. (நோயாளி பராமரிப்பு - சாப்பாடு கொடுத்தல், குளியல் உதவி, மற்றும் அசைவில் உதவி).",
     features: [
       "Feeding support (சாப்பாடு கொடுத்தல்)",
       "Bathing assistance (குளியல் உதவி)",
@@ -68,8 +68,8 @@ export const services = [
     title: "Nursing Services",
     tamilTitle: "நர்சிங் சேவைகள்",
     category: "Medical",
-    shortDesc: "Skilled medical nursing care in the comfort of your home.",
-    longDesc: "Our certified home nurses provide professional medical care including injections, IV therapy, and wound dressing. (நர்சிங் சேவைகள் - இன்ஜெக்ஷன், குளுக்கோஸ், மற்றும் டிரஸ்ஸிங்).",
+    shortDesc: "Skilled home nursing care and medical support in Coimbatore.",
+    longDesc: "Looking for a certified home nurse in Coimbatore? Our nursing services include professional medical care such as injections, IV therapy, and wound dressing at home. (நர்சிங் சேவைகள் - இன்ஜெக்ஷன், குளுக்கோஸ், மற்றும் டிரஸ்ஸிங்).",
     features: [
       "Injection (இன்ஜெக்ஷன்)",
       "IV Drip (குளுக்கோஸ்)",
@@ -92,8 +92,8 @@ export const services = [
     title: "Physiotherapy at Home",
     tamilTitle: "பிசியோதெரபி இல்ல சேவை",
     category: "Medical",
-    shortDesc: "Personalized physical therapy sessions for recovery and mobility.",
-    longDesc: "Our qualified physiotherapists help you recover from injuries and mobility issues. (பிசியோதெரபி - பக்கவாதம், அறுவை சிகிச்சை பின் சிகிச்சை).",
+    shortDesc: "Personalized physiotherapy home visits in Coimbatore for recovery.",
+    longDesc: "Our qualified physiotherapists in Coimbatore provide expert home visit sessions to help you recover from injuries, stroke, and mobility issues. (பிசியோதெரபி - பக்கவாதம், அறுவை சிகிச்சை பின் சிகிச்சை).",
     features: [
       "Surgery Post Rehab (அறுவை சிகிச்சை பின் சிகிச்சை)",
       "Pain Relief Exercises (வலி நிவாரண பயிற்சி)",

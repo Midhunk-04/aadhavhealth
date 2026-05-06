@@ -10,23 +10,23 @@ import { services } from "@/lib/services-data";
 function Counter({ value, duration = 2 }: { value: string, duration?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
   
   useEffect(() => {
     if (isInView) {
       const end = parseInt(value);
       if (isNaN(end)) return;
-      let start = 0;
-      const totalMiliseconds = duration * 1000;
-      const incrementTime = totalMiliseconds / end;
       
-      const timer = setInterval(() => {
-        start += 1;
-        setCount(start);
-        if (start === end) clearInterval(timer);
-      }, incrementTime);
-      
-      return () => clearInterval(timer);
+      let startTime: number | null = null;
+      const step = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
     }
   }, [isInView, value, duration]);
 
@@ -66,7 +66,7 @@ export default function HomeClient() {
             <div className="flex-1 text-center lg:text-left">
               <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
                 <div className="inline-block px-4 py-2 bg-brand-purple/5 text-brand-purple rounded-full text-[10px] font-black uppercase tracking-widest mb-8 border border-brand-purple/10">
-                  Trusted Home Care in Coimbatore
+                  Professional Home Care Services in Coimbatore
                 </div>
                 
                 <h1 className="text-4xl md:text-6xl font-playfair font-black text-brand-purple leading-tight mb-8">
@@ -102,7 +102,7 @@ export default function HomeClient() {
             <motion.div style={{ y: heroImageY }} className="flex-1 relative w-full lg:max-w-xl">
                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} className="relative z-10">
                  <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white">
-                    <img src="/assets/hero-bg.png" alt="Aadhav Home Care Services Coimbatore" className="w-full h-auto object-cover" />
+                  <img src="/assets/hero-bg.png" alt="Aadhav Health Support - Professional Home Care Services in Coimbatore" className="w-full h-auto object-cover" decoding="async" />
                  </div>
                  <div className="absolute -bottom-6 -left-6 bg-brand-purple p-6 rounded-3xl shadow-xl text-white z-20 flex items-center gap-4">
                     <p className="text-3xl font-black font-playfair tracking-tighter"><Counter value="500" />+</p>
@@ -143,18 +143,26 @@ export default function HomeClient() {
           <div className="h-1.5 bg-brand-teal w-12 mx-auto rounded-full" />
         </div>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-            {services.slice(0, 3).map((service, index) => (
-              <motion.div key={index} whileHover={{ y: -8 }} className="bg-white rounded-[2.5rem] shadow-lg border border-gray-100 flex flex-col group overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+            {services.map((service, index) => (
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8 }} 
+                className="bg-white rounded-[2.5rem] shadow-lg border border-gray-100 flex flex-col group overflow-hidden"
+              >
                 <Link href={`/services/${service.slug}`}>
                   <div className="relative h-60 overflow-hidden">
-                    <img src={service.image} alt={`${service.title} Home Care Coimbatore`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <img src={service.image} alt={`${service.title} - ${service.shortDesc} in Coimbatore`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" />
                   </div>
                   <div className="p-10">
                     <h3 className="text-xl font-black text-brand-purple mb-1 uppercase tracking-tight">{service.title}</h3>
                     <p className="text-brand-teal font-bold text-[10px] uppercase mb-6">{service.tamilTitle}</p>
                     <p className="text-gray-500 text-sm leading-relaxed mb-8 line-clamp-3 font-medium">{service.shortDesc}</p>
-                    <div className="flex items-center gap-3 text-brand-purple font-black text-[9px] uppercase tracking-widest">Details <ArrowRight className="w-4 h-4" /></div>
+                    <div className="flex items-center gap-3 text-brand-purple font-black text-[9px] uppercase tracking-widest">Details & Pricing <ArrowRight className="w-4 h-4" /></div>
                   </div>
                 </Link>
               </motion.div>
@@ -170,16 +178,30 @@ export default function HomeClient() {
         </div>
       </section>
 
+
+
       {/* Why Choose Us */}
       <section className="py-24 bg-gray-50/30">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-            <div className="lg:w-1/2 relative">
+            <motion.div 
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7 }}
+              className="lg:w-1/2 relative"
+            >
               <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white">
-                 <img src="/assets/why-us.png" alt="Aadhav Health Support Quality Care Coimbatore" className="w-full h-[500px] object-cover" />
+                 <img src="/assets/why-us.png" alt="Why Choose Aadhav Health Support - Quality Elderly and Patient Care in Coimbatore" className="w-full h-[500px] object-cover" loading="lazy" decoding="async" />
               </div>
-            </div>
-            <div className="lg:w-1/2">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7 }}
+              className="lg:w-1/2"
+            >
               <h2 className="text-3xl md:text-5xl font-playfair font-black text-brand-purple mb-12 uppercase tracking-tighter">Why Choose <br /> <span className="text-brand-teal">Aadhav Health.</span></h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {[
@@ -197,7 +219,7 @@ export default function HomeClient() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -205,7 +227,7 @@ export default function HomeClient() {
       {/* Reviews Marquee Section - Violet Background */}
       <section className="py-20 bg-brand-purple relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-           <img src="/assets/medical-pattern.png" alt="Pattern" className="w-full h-full object-cover grayscale invert" />
+           <img src="/assets/medical-pattern.png" alt="Pattern" className="w-full h-full object-cover grayscale invert" loading="lazy" decoding="async" />
         </div>
         <div className="container mx-auto px-4 mb-12 text-center relative z-10">
            <p className="text-brand-teal font-black text-[10px] uppercase tracking-[0.4em] mb-4">Real Patient Stories</p>
@@ -244,17 +266,75 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-24 bg-gray-50/50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-playfair font-black text-brand-purple mb-4 uppercase tracking-tighter">Frequently Asked Questions</h2>
+            <p className="text-gray-500 font-medium">Common questions about our home care services in Coimbatore.</p>
+          </div>
+          
+          <div className="space-y-6">
+            {[
+              {
+                q: "What types of home care services do you provide?",
+                a: "We provide comprehensive home healthcare including elderly care, professional home nursing, patient care, postnatal baby care, physiotherapy, and doctor home visits across Coimbatore and surrounding regions."
+              },
+              {
+                q: "Are your nurses and caregivers certified?",
+                a: "Yes, all our staff members are certified professionals who undergo strict background checks and regular training to ensure the highest standards of medical care and safety."
+              },
+              {
+                q: "Do you offer 24/7 home nursing services?",
+                a: "Absolutely. We offer both 12-hour (day/night) and 24-hour (stay-in) services depending on the patient's requirements."
+              },
+              {
+                q: "How do I book a service with Aadhav Health Support?",
+                a: "You can book a service by calling us directly at +91 7358961021 or by filling out the consultation form on our contact page."
+              },
+              {
+                q: "Which areas do you serve in Tamil Nadu?",
+                a: "We primarily serve Coimbatore, Tirupur, Pollachi, Erode, Mettupalayam, and Avinashi. We are expanding to other nearby regions as well."
+              }
+            ].map((faq, i) => (
+              <details key={i} className="group bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer transition-all duration-300">
+                <summary className="p-8 text-lg font-black text-brand-purple flex items-center justify-between list-none outline-none [&::-webkit-details-marker]:hidden">
+                  <span className="flex items-start gap-4">
+                     <span className="text-brand-teal">Q.</span> 
+                     <span className="flex-1 mt-0.5">{faq.q}</span>
+                  </span>
+                  <span className="text-brand-teal transition-transform duration-300 group-open:rotate-45 text-2xl font-normal opacity-70 shrink-0">+</span>
+                </summary>
+                <div className="px-8 pb-8 pt-0 text-gray-600 text-sm leading-relaxed pl-[4.5rem]">
+                  <p>{faq.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Service Areas Bar */}
       <section className="py-12 bg-brand-lavender/30 border-y border-brand-lavender">
         <div className="container mx-auto px-4 text-center">
           <p className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-purple/40 mb-6">Serving Major Regions In Tamil Nadu</p>
-          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-8">
             {["Coimbatore", "Tirupur", "Pollachi", "Erode", "Mettupalayam", "Avinashi"].map((area, i) => (
               <div key={i} className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-brand-teal" />
                 <span className="text-sm font-black text-brand-purple uppercase tracking-widest">{area}</span>
               </div>
             ))}
+          </div>
+          
+          {/* Hyper-Local SEO Neighborhoods */}
+          <div className="pt-8 border-t border-brand-purple/10">
+            <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400 mb-4">Our Serviceable Areas in Coimbatore</p>
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 max-w-4xl mx-auto">
+              {["Peelamedu", "RS Puram", "Gandhipuram", "Saravanampatti", "Saibaba Colony", "Vadavalli", "Kovaipudur", "Singanallur", "Race Course", "Ganapathy", "Thudiyalur", "Podanur"].map((neighborhood, idx) => (
+                <span key={idx} className="text-[10px] text-gray-500 font-medium">{neighborhood}</span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
