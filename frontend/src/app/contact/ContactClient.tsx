@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function RevealText({ children, className = "" }: { children: React.ReactNode, className?: string }) {
   return (
@@ -25,7 +25,8 @@ function RevealText({ children, className = "" }: { children: React.ReactNode, c
 }
 
 export default function ContactClient() {
-  const { register, handleSubmit, reset } = useForm();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const { register, handleSubmit, reset, formState: { isSubmitting, errors } } = useForm();
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -41,10 +42,26 @@ export default function ContactClient() {
     // window.gtag('event', 'whatsapp_click', { 'event_category': 'engagement' });
   };
 
-  const onSubmit = (data: Record<string, any>) => {
-    console.log("Contact Data:", data);
-    alert("Message sent successfully! Our team will get back to you shortly.");
-    reset();
+  const onSubmit = async (data: Record<string, any>) => {
+    try {
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwmpQqmQZjQy3YR-0sUKl1rDBcpkEcEmFRbZ498jnlLuiCPlZqBkU-qztN1MJSXNlE2/exec";
+      
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+          ...data,
+          formType: "contact",
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      setShowSuccess(true);
+      reset();
+    } catch (error) {
+      console.error("Fetch Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -85,45 +102,81 @@ export default function ContactClient() {
                 <h2 className="text-3xl font-playfair font-black text-gray-900 mb-4 uppercase tracking-tighter">Send Message</h2>
                 <p className="text-gray-500 mb-10 font-medium">Fill out the details below and we'll reach out promptly.</p>
                 
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Full Name *</Label>
-                      <Input id="name" {...register("name", { required: true })} placeholder="John Doe" className="h-14 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
+                {showSuccess ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-center py-20 px-6 bg-brand-purple/5 rounded-[2.5rem] border-2 border-dashed border-brand-purple/20"
+                  >
+                    <div className="w-20 h-20 bg-brand-purple text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
+                       <ShieldCheck className="w-10 h-10" />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Phone Number *</Label>
-                      <Input id="phone" type="tel" {...register("phone", { required: true })} placeholder="+91" className="h-14 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
+                    <h2 className="text-3xl font-playfair font-black text-gray-900 mb-4 uppercase tracking-tighter">Thank You!</h2>
+                    <p className="text-gray-500 font-bold mb-10 max-w-sm mx-auto">Your inquiry has been received. Our team will contact you shortly via email or phone.</p>
+                    <Button 
+                      onClick={() => setShowSuccess(false)}
+                      variant="outline"
+                      className="border-brand-purple text-brand-purple hover:bg-brand-purple hover:text-white font-black uppercase tracking-widest rounded-xl px-10"
+                    >
+                      Send Another Message
+                    </Button>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Full Name *</Label>
+                        <Input id="name" {...register("name", { required: "Name is required" })} placeholder="John Doe" className="h-14 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
+                        {errors.name && <p className="text-red-500 text-[10px] font-bold">{errors.name.message as string}</p>}
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Phone Number *</Label>
+                        <Input id="phone" type="tel" {...register("phone", { required: "Phone is required" })} placeholder="+91" className="h-14 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
+                        {errors.phone && <p className="text-red-500 text-[10px] font-bold">{errors.phone.message as string}</p>}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="service" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Service Needed *</Label>
-                      <select id="service" {...register("service", { required: true })} className="flex h-14 w-full rounded-2xl bg-gray-50 border-0 px-4 py-2 text-sm focus:ring-2 focus:ring-brand-purple">
-                        <option value="">Select Service</option>
-                        <option value="Elderly Care">Elderly Care</option>
-                        <option value="Patient Care">Patient Care</option>
-                        <option value="Baby Care">Baby/Postnatal Care</option>
-                        <option value="Nursing">Nursing Services</option>
-                        <option value="Physiotherapy">Physiotherapy</option>
-                        <option value="Doctor Visit">Doctor Home Visit</option>
-                        <option value="Other">Other Query</option>
-                      </select>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Address *</Label>
+                        <Input id="email" type="email" {...register("email", { required: "Email is required" })} placeholder="john@example.com" className="h-14 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
+                        {errors.email && <p className="text-red-500 text-[10px] font-bold">{errors.email.message as string}</p>}
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="service" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Service Needed *</Label>
+                        <select id="service" {...register("service", { required: "Please select a service" })} className="flex h-14 w-full rounded-2xl bg-gray-50 border-0 px-4 py-2 text-sm focus:ring-2 focus:ring-brand-purple">
+                          <option value="">Select Service</option>
+                          <option value="Elderly Care">Elderly Care</option>
+                          <option value="Patient Care">Patient Care</option>
+                          <option value="Baby Care">Baby/Postnatal Care</option>
+                          <option value="Nursing">Nursing Services</option>
+                          <option value="Physiotherapy">Physiotherapy</option>
+                          <option value="Doctor Visit">Doctor Home Visit</option>
+                          <option value="Other">Other Query</option>
+                        </select>
+                        {errors.service && <p className="text-red-500 text-[10px] font-bold">{errors.service.message as string}</p>}
+                      </div>
                     </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="time" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Preferred Time</Label>
+                      <Label htmlFor="time" className="text-[10px] font-black uppercase tracking-widest text-gray-400">Preferred Time for Callback</Label>
                       <Input id="time" type="time" {...register("time")} className="h-14 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
                     </div>
-                  </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-gray-400">How can we help? *</Label>
-                    <Textarea id="message" {...register("message")} placeholder="Briefly describe your requirements..." className="resize-none h-32 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
-                  </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-[10px] font-black uppercase tracking-widest text-gray-400">How can we help? *</Label>
+                      <Textarea id="message" {...register("message")} placeholder="Briefly describe your requirements..." className="resize-none h-32 rounded-2xl bg-gray-50 border-0 focus:ring-2 focus:ring-brand-purple" />
+                    </div>
 
-                  <Button type="submit" className="w-full bg-brand-purple hover:bg-brand-teal text-white py-8 text-lg font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all">Send Message <ArrowRight className="ml-2 w-5 h-5" /></Button>
-                </form>
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full bg-brand-purple hover:bg-brand-teal text-white py-8 text-lg font-black uppercase tracking-widest rounded-2xl shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? "Sending..." : "Send Message"} <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                  </form>
+                )}
               </motion.div>
             </div>
 

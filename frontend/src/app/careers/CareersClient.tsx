@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { GraduationCap, HeartHandshake, Briefcase, ArrowRight, CheckCircle2, Home, Users, Stethoscope, Banknote, BookOpen, Clock } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 const benefits = [
   { title: "Good Income", tamil: "நல்ல வருமானம்", icon: <Banknote className="w-6 h-6" /> },
@@ -58,11 +59,47 @@ const roles = [
 ];
 
 export default function CareersClient() {
-  const { register, handleSubmit, reset } = useForm();
+  const [showSuccess, setShowSuccess] = useState(false);
+  const { register, handleSubmit, reset, formState: { isSubmitting, errors } } = useForm();
   
-  const onSubmit = (data: Record<string, any>) => {
-    alert("Application submitted successfully! Our team will contact you soon.");
-    reset();
+  const toBase64 = (file: File): Promise<string> => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve((reader.result as string).split(',')[1]);
+    reader.onerror = error => reject(error);
+  });
+
+  const onSubmit = async (data: Record<string, any>) => {
+    try {
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwmpQqmQZjQy3YR-0sUKl1rDBcpkEcEmFRbZ498jnlLuiCPlZqBkU-qztN1MJSXNlE2/exec";
+      
+      let payload: Record<string, any> = {
+        ...data,
+        formType: "career",
+        timestamp: new Date().toISOString(),
+      };
+
+      if (data.resume && data.resume[0]) {
+        const file = data.resume[0];
+        const base64 = await toBase64(file);
+        payload.resumeBase64 = base64;
+        payload.resumeName = file.name;
+        payload.resumeType = file.type;
+        delete payload.resume;
+      }
+
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify(payload),
+      });
+
+      setShowSuccess(true);
+      reset();
+    } catch (error) {
+      console.error("Submission Error:", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -187,48 +224,74 @@ export default function CareersClient() {
                 </div>
              </div>
 
-             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Full Name</label>
-                     <input {...register("name")} className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none" required placeholder="Ex: Priya Lakshmi" />
+             {showSuccess ? (
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-gray-50 p-12 rounded-[2.5rem] border-2 border-dashed border-brand-teal/20 text-center"
+                >
+                  <div className="w-20 h-20 bg-brand-teal text-white rounded-2xl flex items-center justify-center mx-auto mb-8 rotate-3 shadow-xl">
+                    <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <div className="space-y-2">
-                     <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Phone Number</label>
-                     <input {...register("phone")} className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none" required placeholder="91XXXXXXXX" />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Email Address</label>
-                   <input {...register("email")} type="email" className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none" required placeholder="priya@example.com" />
-                </div>
-
-                <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Applying for Role</label>
-                   <select {...register("role")} className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none">
-                      <option>Elderly Care</option>
-                      <option>Child Care</option>
-                      <option>Home Nurse</option>
-                      <option>Physiotherapist</option>
-                   </select>
-                </div>
-
-                <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Upload Resume (PDF/DOC)</label>
-                   <div className="relative group">
-                     <input 
-                       {...register("resume")} 
-                       type="file" 
-                       accept=".pdf,.doc,.docx"
-                       className="w-full bg-gray-50 border border-dashed border-gray-300 rounded-2xl px-6 py-8 text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:bg-brand-purple file:text-white hover:border-brand-teal transition-all cursor-pointer" 
-                       required 
-                     />
+                  <h3 className="text-3xl font-playfair font-black text-brand-purple mb-4 uppercase tracking-tighter">Application Sent!</h3>
+                  <p className="text-gray-500 font-medium mb-10 max-w-xs mx-auto">Thank you for your interest. Our recruitment team will review your profile and contact you within 24 hours.</p>
+                  <Button 
+                    onClick={() => setShowSuccess(false)}
+                    className="bg-brand-purple hover:bg-brand-teal text-white px-10 py-6 rounded-xl font-black uppercase tracking-widest text-[10px]"
+                  >
+                    Submit Another Application
+                  </Button>
+                </motion.div>
+             ) : (
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Full Name</label>
+                        <input {...register("name", { required: true })} className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none" required placeholder="Ex: Priya Lakshmi" />
+                     </div>
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Phone Number</label>
+                        <input {...register("phone", { required: true })} className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none" required placeholder="91XXXXXXXX" />
+                     </div>
                    </div>
-                </div>
 
-                <Button type="submit" className="w-full bg-brand-teal hover:bg-brand-purple text-white py-8 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl transition-all">Submit Application</Button>
-             </form>
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Email Address</label>
+                      <input {...register("email", { required: true })} type="email" className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none" required placeholder="priya@example.com" />
+                   </div>
+
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Applying for Role</label>
+                      <select {...register("role")} className="w-full bg-gray-50 border border-gray-100 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-purple transition-all outline-none">
+                         <option>Elderly Care</option>
+                         <option>Child Care</option>
+                         <option>Home Nurse</option>
+                         <option>Physiotherapist</option>
+                      </select>
+                   </div>
+
+                   <div className="space-y-2">
+                      <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-2">Upload Resume (PDF/DOC)</label>
+                      <div className="relative group">
+                        <input 
+                          {...register("resume", { required: true })} 
+                          type="file" 
+                          accept=".pdf,.doc,.docx"
+                          className="w-full bg-gray-50 border border-dashed border-gray-300 rounded-2xl px-6 py-8 text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:bg-brand-purple file:text-white hover:border-brand-teal transition-all cursor-pointer" 
+                          required 
+                        />
+                      </div>
+                   </div>
+
+                   <Button 
+                     type="submit" 
+                     disabled={isSubmitting}
+                     className="w-full bg-brand-teal hover:bg-brand-purple text-white py-8 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                   >
+                     {isSubmitting ? "Submitting..." : "Submit Application"}
+                   </Button>
+                </form>
+             )}
           </div>
         </div>
       </section>
