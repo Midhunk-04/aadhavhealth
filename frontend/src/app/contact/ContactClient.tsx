@@ -44,7 +44,7 @@ export default function ContactClient() {
 
   const onSubmit = async (data: Record<string, any>) => {
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwmpQqmQZjQy3YR-0sUKl1rDBcpkEcEmFRbZ498jnlLuiCPlZqBkU-qztN1MJSXNlE2/exec";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzWnbEy7jEK7kDuHx2pMOf-mCFfkFCOrsHIaVNhOkNZrYXM-9OziPPDfNN_AV_kEe7H/exec";
       
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
