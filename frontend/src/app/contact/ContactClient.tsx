@@ -44,16 +44,23 @@ export default function ContactClient() {
 
   const onSubmit = async (data: Record<string, any>) => {
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwyA9_EffArtr-6qB832CBCn7C2ynULsgAAfc8PCCxdQNsM2hDWu_JLIWG-mDLpmcvt/exec";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwp_x_hKNxzR9mIYBEuVnLCgOl4n0Lv3htc8o277L9inhYGxRskkAbTQbS0FJocaLrUoA/exec";
       
+      // Use URLSearchParams for better compatibility with Google Apps Script doPost(e)
+      const formData = new URLSearchParams();
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      formData.append("formType", "contact");
+      formData.append("timestamp", new Date().toISOString());
+
       await fetch(GOOGLE_SCRIPT_URL, {
         method: "POST",
         mode: "no-cors",
-        body: JSON.stringify({
-          ...data,
-          formType: "contact",
-          timestamp: new Date().toISOString(),
-        }),
+        body: formData.toString(),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
       });
 
       setShowSuccess(true);
