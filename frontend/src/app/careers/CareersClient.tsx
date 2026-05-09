@@ -71,7 +71,7 @@ export default function CareersClient() {
 
   const onSubmit = async (data: Record<string, any>) => {
     try {
-      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwp_x_hKNxzR9mIYBEuVnLCgOl4n0Lv3htc8o277L9inhYGxRskkAbTQbS0FJocaLrUoA/exec";
+      const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxJbu80qVqw9wyAFczJwxK03kzl59D8z7hNqPCiAtYFWmFS1lpJss2IADm8qZcD2iQogQ/exec";
       
       let payload: Record<string, any> = {
         ...data,
