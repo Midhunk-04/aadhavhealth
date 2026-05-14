@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${service.title} | Aadhav Health Support Coimbatore`,
       description: service.shortDesc,
-      url: `https://aadhavhealthsupport.in/services/${service.slug}`,
+      url: `https://aadhavheathsupport.in/services/${service.slug}`,
       images: [
         {
           url: service.image,

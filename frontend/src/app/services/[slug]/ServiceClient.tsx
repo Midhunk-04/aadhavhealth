@@ -48,19 +48,19 @@ export default function ServiceClient({ service }: { service: { title: string, t
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://aadhavhealthsupport.in"
+                "item": "https://aadhavheathsupport.in"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Services",
-                "item": "https://aadhavhealthsupport.in/services"
+                "item": "https://aadhavheathsupport.in/services"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
                 "name": service.title,
-                "item": `https://aadhavhealthsupport.in/services/${service.title.toLowerCase().replace(/ /g, "-")}`
+                "item": `https://aadhavheathsupport.in/services/${service.title.toLowerCase().replace(/ /g, "-")}`
               }
             ]
           })

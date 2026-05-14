@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://aadhavhealthsupport.in/sitemap.xml',
+    sitemap: 'https://aadhavheathsupport.in/sitemap.xml',
   };
 }

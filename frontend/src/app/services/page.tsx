@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Our Home Care Services | Aadhav Health Support Coimbatore",
     description: "Expert home nursing, elderly care, and patient care services in Coimbatore. Discover how we can help you today.",
-    url: "https://aadhavhealthsupport.in/services",
+    url: "https://aadhavheathsupport.in/services",
   }
 };
 
