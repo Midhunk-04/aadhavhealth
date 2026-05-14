@@ -9,15 +9,13 @@ import { Button } from "@/components/ui/button";
 import { services } from "@/lib/services-data";
 
 function Counter({ value, duration = 2 }: { value: string, duration?: number }) {
-  const [count, setCount] = useState(0);
+  const end = parseInt(value);
+  const [count, setCount] = useState(isNaN(end) ? 0 : end); // Start at real value for SSR
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
   
   useEffect(() => {
-    if (isInView) {
-      const end = parseInt(value);
-      if (isNaN(end)) return;
-      
+    if (isInView && !isNaN(end)) {
       let startTime: number | null = null;
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
@@ -29,7 +27,7 @@ function Counter({ value, duration = 2 }: { value: string, duration?: number }) 
       };
       window.requestAnimationFrame(step);
     }
-  }, [isInView, value, duration]);
+  }, [isInView, end, duration]);
 
   return <span ref={ref}>{count}{value.includes("+") ? "+" : ""}</span>;
 }
