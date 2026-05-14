@@ -2,7 +2,7 @@
 
 export const services = [
   {
-    slug: "elderly-care",
+    slug: "elderly-care-coimbatore",
     title: "Elderly Care",
     tamilTitle: "முதியோர் பராமரிப்பு",
     category: "Non-Medical",
@@ -22,7 +22,7 @@ export const services = [
     image: "/assets/service-elderly.png"
   },
   {
-    slug: "patient-care",
+    slug: "patient-care-coimbatore",
     title: "Patient Care",
     tamilTitle: "நோயாளி பராமரிப்பு",
     category: "Non-Medical",
@@ -42,7 +42,7 @@ export const services = [
     image: "/assets/service-patient.png"
   },
   {
-    slug: "postnatal-baby-care",
+    slug: "postnatal-baby-care-coimbatore",
     title: "Postnatal & Baby Care",
     tamilTitle: "குழந்தை கவனிப்பு / Postnatal Care",
     category: "Non-Medical",
@@ -64,7 +64,7 @@ export const services = [
     image: "/assets/service-baby.png"
   },
   {
-    slug: "nursing-services",
+    slug: "home-nursing-care-coimbatore",
     title: "Nursing Services",
     tamilTitle: "நர்சிங் சேவைகள்",
     category: "Medical",
@@ -88,7 +88,7 @@ export const services = [
     image: "/assets/service-nursing.png"
   },
   {
-    slug: "physiotherapy-home",
+    slug: "physiotherapy-home-visit-coimbatore",
     title: "Physiotherapy at Home",
     tamilTitle: "பிசியோதெரபி இல்ல சேவை",
     category: "Medical",
@@ -108,7 +108,7 @@ export const services = [
     image: "/assets/service-physio.png"
   },
   {
-    slug: "doctor-home-visit",
+    slug: "doctor-home-visit-coimbatore",
     title: "Doctor Home Visit",
     tamilTitle: "மருத்துவர் இல்ல வருகை",
     category: "Medical",
