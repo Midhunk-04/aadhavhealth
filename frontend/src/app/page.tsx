@@ -5,9 +5,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Aadhav Health Support",
-  "image": "https://aadhavheathsupport.in/assets/hero-bg.png",
-  "@id": "https://aadhavheathsupport.in",
-  "url": "https://aadhavheathsupport.in",
+  "image": "https://aadhavhealthsupport.in/assets/hero-bg.png",
+  "@id": "https://aadhavhealthsupport.in",
+  "url": "https://aadhavhealthsupport.in",
   "telephone": "+917358961021",
   "address": {
     "@type": "PostalAddress",

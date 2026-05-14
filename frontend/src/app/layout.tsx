@@ -18,7 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aadhavheathsupport.in'),
+  metadataBase: new URL('https://aadhavhealthsupport.in'),
   title: {
     default: "Aadhav Health Support | Best Home Care & Nursing in Coimbatore",
     template: "%s | Aadhav Health Support Coimbatore"
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://aadhavheathsupport.in",
+    url: "https://aadhavhealthsupport.in",
     siteName: "Aadhav Health Support",
     title: "Aadhav Health Support | Expert Home Healthcare in Coimbatore",
     description: "Professional, certified, and compassionate home nursing and elderly care services in Coimbatore.",
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
     images: ["/assets/hero-bg.png"],
   },
   alternates: {
-    canonical: "https://aadhavheathsupport.in",
+    canonical: "https://aadhavhealthsupport.in",
     languages: {
-      "en-IN": "https://aadhavheathsupport.in",
+      "en-IN": "https://aadhavhealthsupport.in",
     },
   },
   robots: {
@@ -122,9 +122,9 @@ export default function RootLayout({
                   "@context": "https://schema.org",
                   "@type": "LocalBusiness",
                   "name": "Aadhav Health Support",
-                  "image": "https://aadhavheathsupport.in/assets/logo-transparent.png",
-                  "@id": "https://aadhavheathsupport.in",
-                  "url": "https://aadhavheathsupport.in",
+                  "image": "https://aadhavhealthsupport.in/assets/logo-transparent.png",
+                  "@id": "https://aadhavhealthsupport.in",
+                  "url": "https://aadhavhealthsupport.in",
                   "telephone": "+917358961021",
                   "address": {
                     "@type": "PostalAddress",
@@ -171,31 +171,31 @@ export default function RootLayout({
                       "@type": "ListItem",
                       "position": 1,
                       "name": "Home",
-                      "item": "https://aadhavheathsupport.in"
+                      "item": "https://aadhavhealthsupport.in"
                     },
                     {
                       "@type": "ListItem",
                       "position": 2,
                       "name": "Services",
-                      "item": "https://aadhavheathsupport.in/services"
+                      "item": "https://aadhavhealthsupport.in/services"
                     },
                     {
                       "@type": "ListItem",
                       "position": 3,
                       "name": "Pricing",
-                      "item": "https://aadhavheathsupport.in/pricing"
+                      "item": "https://aadhavhealthsupport.in/pricing"
                     },
                     {
                       "@type": "ListItem",
                       "position": 4,
                       "name": "About",
-                      "item": "https://aadhavheathsupport.in/about"
+                      "item": "https://aadhavhealthsupport.in/about"
                     },
                     {
                       "@type": "ListItem",
                       "position": 5,
                       "name": "Contact",
-                      "item": "https://aadhavheathsupport.in/contact"
+                      "item": "https://aadhavhealthsupport.in/contact"
                     }
                   ]
                 })

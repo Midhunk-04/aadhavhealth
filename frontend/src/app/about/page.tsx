@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Our Story | Aadhav Health Support Coimbatore",
     description: "Healing happens best where the heart is — at home. Learn about our compassionate home care journey.",
-    url: "https://aadhavheathsupport.in/about",
+    url: "https://aadhavhealthsupport.in/about",
   }
 };
 

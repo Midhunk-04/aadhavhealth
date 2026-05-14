@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { services } from '@/lib/services-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aadhavheathsupport.in';
+  const baseUrl = 'https://aadhavhealthsupport.in';
 
   // Base routes
   const routes = ['', '/services', '/about', '/pricing', '/careers', '/contact'].map(

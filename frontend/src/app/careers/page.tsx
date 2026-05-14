@@ -25,8 +25,8 @@ const jsonLd = {
   "hiringOrganization": {
     "@type": "Organization",
     "name": "Aadhav Health Support",
-    "sameAs": "https://aadhavheathsupport.in",
-    "logo": "https://aadhavheathsupport.in/assets/logo.png"
+    "sameAs": "https://aadhavhealthsupport.in",
+    "logo": "https://aadhavhealthsupport.in/assets/logo.png"
   },
   "jobLocation": {
     "@type": "Place",
