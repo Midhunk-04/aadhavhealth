@@ -91,7 +91,7 @@ export default function HomeClient() {
                   </Link>
                   <Link href="/contact">
                     <Button variant="outline" className="border-2 border-brand-purple text-brand-purple hover:bg-brand-purple hover:text-white rounded-2xl px-10 py-7 font-black uppercase tracking-widest text-[10px]">
-                      Book Consultation
+                      Book a Call
                     </Button>
                   </Link>
                 </div>

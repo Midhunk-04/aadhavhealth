@@ -94,8 +94,8 @@ export function Navbar() {
                 className="hidden md:flex bg-brand-purple hover:bg-brand-teal text-white gap-2 rounded-full px-5 py-4 text-xs font-bold tracking-wider shadow-md transition-all duration-300 hover:shadow-brand-teal/10"
                 asChild
               >
-                <Link href="/contact">
-                  <Phone className="w-3.5 h-3.5" /> Book Consultation
+                <Link href="tel:+917358961021">
+                  <Phone className="w-3.5 h-3.5" /> Book a Call
                 </Link>
               </Button>
               
@@ -137,8 +137,8 @@ export function Navbar() {
                 className="w-full bg-brand-purple hover:bg-brand-purple/90 text-white gap-2 mt-2"
                 asChild
               >
-                <Link href="/contact">
-                  <Phone className="w-4 h-4" /> Book Now
+                <Link href="tel:+917358961021">
+                  <Phone className="w-4 h-4" /> Book a Call
                 </Link>
               </Button>
             </motion.div>

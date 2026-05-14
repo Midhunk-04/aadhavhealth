@@ -99,9 +99,14 @@ export function Footer() {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>© {new Date().getFullYear()} Aadhav Health Support. All rights reserved.</p>
-          <p className="flex items-center gap-1">
-            Made with <Heart className="w-4 h-4 text-brand-teal" /> in India
-          </p>
+          <a 
+            href="https://www.zevora.work" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-brand-teal transition-colors font-medium"
+          >
+            Designed by Zevora
+          </a>
         </div>
       </div>
     </footer>
