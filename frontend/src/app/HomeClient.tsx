@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Phone, HeartPulse, ShieldCheck, Star, Users, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { services } from "@/lib/services-data";
@@ -102,7 +103,14 @@ export default function HomeClient() {
             <motion.div style={{ y: heroImageY }} className="flex-1 relative w-full lg:max-w-xl">
                <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }} className="relative z-10">
                  <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white">
-                  <img src="/assets/hero-bg.png" alt="Aadhav Health Support - Professional Home Care Services in Coimbatore" className="w-full h-auto object-cover" decoding="async" />
+                  <Image 
+                    src="/assets/hero-bg.png" 
+                    alt="Aadhav Health Support - Professional Home Care Services in Coimbatore" 
+                    width={800}
+                    height={600}
+                    priority={true}
+                    className="w-full h-auto object-cover"
+                  />
                  </div>
                  <div className="absolute -bottom-6 -left-6 bg-brand-purple p-6 rounded-3xl shadow-xl text-white z-20 flex items-center gap-4">
                     <p className="text-3xl font-black font-playfair tracking-tighter"><Counter value="500" />+</p>
