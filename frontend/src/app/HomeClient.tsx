@@ -162,7 +162,7 @@ export default function HomeClient() {
                     <h3 className="text-xl font-black text-brand-purple mb-1 uppercase tracking-tight">{service.title}</h3>
                     <p className="text-brand-teal font-bold text-[10px] uppercase mb-6">{service.tamilTitle}</p>
                     <p className="text-gray-500 text-sm leading-relaxed mb-8 line-clamp-3 font-medium">{service.shortDesc}</p>
-                    <div className="flex items-center gap-3 text-brand-purple font-black text-[9px] uppercase tracking-widest">Details & Pricing <ArrowRight className="w-4 h-4" /></div>
+                    <div className="flex items-center gap-3 text-brand-purple font-black text-[9px] uppercase tracking-widest">{service.title} Details <ArrowRight className="w-4 h-4" /></div>
                   </div>
                 </Link>
               </motion.div>

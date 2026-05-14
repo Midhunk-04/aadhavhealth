@@ -132,7 +132,7 @@ export default function ServicesClient() {
                   
                   <Button className="w-full bg-gray-50 text-brand-purple hover:bg-brand-purple hover:text-white py-8 rounded-2xl font-black uppercase tracking-widest transition-all" asChild>
                     <Link href={`/services/${service.slug}`}>
-                      Details & Pricing <ArrowRight className="w-5 h-5 ml-2" />
+                      View {service.title} <ArrowRight className="w-5 h-5 ml-2" />
                     </Link>
                   </Button>
                 </div>

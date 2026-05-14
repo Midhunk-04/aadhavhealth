@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     default: "Aadhav Health Support | Best Home Care & Nursing in Coimbatore",
     template: "%s | Aadhav Health Support Coimbatore"
   },
-  description: "Aadhav Health Support offers premier home care services in Coimbatore, including elderly care, professional home nursing, patient care, and physiotherapy. Trustworthy and compassionate care at your doorstep.",
+  description: "Aadhav Health Support: Premier home care in Coimbatore. Expert elderly care, nursing, & physiotherapy. Compassionate, certified care at your doorstep.",
   keywords: [
     "Home Care Services Coimbatore",
     "Best Home Nursing Coimbatore",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     url: "https://aadhavhealthsupport.in",
     siteName: "Aadhav Health Support",
     title: "Aadhav Health Support | Expert Home Healthcare in Coimbatore",
-    description: "Professional, certified, and compassionate home nursing and elderly care services in Coimbatore. Your family's health is our priority.",
+    description: "Professional, certified, and compassionate home nursing and elderly care services in Coimbatore.",
     images: [
       {
         url: "/assets/hero-bg.png",
@@ -72,7 +72,6 @@ export const metadata: Metadata = {
     canonical: "https://aadhavhealthsupport.in",
     languages: {
       "en-IN": "https://aadhavhealthsupport.in",
-      "ta-IN": "https://aadhavhealthsupport.in/ta",
     },
   },
   robots: {
