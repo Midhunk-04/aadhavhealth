@@ -188,7 +188,7 @@ export default function RootLayout({
                             "itemOffered": {
                               "@type": "Service",
                               "name": "Elderly Care",
-                              "url": "https://aadhavhealthsupport.in/services/elderly-care",
+                              "url": "https://aadhavhealthsupport.in/services/elderly-care-coimbatore",
                               "description": "Compassionate support and assistance for seniors at home in Coimbatore."
                             }
                           },
@@ -197,7 +197,7 @@ export default function RootLayout({
                             "itemOffered": {
                               "@type": "Service",
                               "name": "Home Nursing Services",
-                              "url": "https://aadhavhealthsupport.in/services/nursing-services",
+                              "url": "https://aadhavhealthsupport.in/services/home-nursing-care-coimbatore",
                               "description": "Skilled home nursing care and medical support in Coimbatore."
                             }
                           },
@@ -206,7 +206,7 @@ export default function RootLayout({
                             "itemOffered": {
                               "@type": "Service",
                               "name": "Patient Care",
-                              "url": "https://aadhavhealthsupport.in/services/patient-care",
+                              "url": "https://aadhavhealthsupport.in/services/patient-care-coimbatore",
                               "description": "Professional monitoring and patient care services in Coimbatore."
                             }
                           },
@@ -215,7 +215,7 @@ export default function RootLayout({
                             "itemOffered": {
                               "@type": "Service",
                               "name": "Physiotherapy at Home",
-                              "url": "https://aadhavhealthsupport.in/services/physiotherapy-home",
+                              "url": "https://aadhavhealthsupport.in/services/physiotherapy-home-visit-coimbatore",
                               "description": "Personalized physiotherapy home visits in Coimbatore for recovery."
                             }
                           },
@@ -224,7 +224,7 @@ export default function RootLayout({
                             "itemOffered": {
                               "@type": "Service",
                               "name": "Postnatal and Baby Care",
-                              "url": "https://aadhavhealthsupport.in/services/postnatal-baby-care",
+                              "url": "https://aadhavhealthsupport.in/services/postnatal-baby-care-coimbatore",
                               "description": "Nurturing care for newborns and support for new mothers."
                             }
                           },
@@ -233,7 +233,7 @@ export default function RootLayout({
                             "itemOffered": {
                               "@type": "Service",
                               "name": "Doctor Home Visit",
-                              "url": "https://aadhavhealthsupport.in/services/doctor-home-visit",
+                              "url": "https://aadhavhealthsupport.in/services/doctor-home-visit-coimbatore",
                               "description": "Professional medical consultation at your doorstep in Coimbatore."
                             }
                           }

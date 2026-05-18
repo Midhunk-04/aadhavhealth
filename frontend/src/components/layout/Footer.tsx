@@ -56,19 +56,19 @@ export function Footer() {
             <h4 className="text-white font-semibold mb-6">Our Services</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/services/elderly-care" className="hover:text-brand-teal transition-colors">Elderly Care</Link>
+                <Link href="/services/elderly-care-coimbatore" className="hover:text-brand-teal transition-colors">Elderly Care</Link>
               </li>
               <li>
-                <Link href="/services/patient-care" className="hover:text-brand-teal transition-colors">Patient Care</Link>
+                <Link href="/services/patient-care-coimbatore" className="hover:text-brand-teal transition-colors">Patient Care</Link>
               </li>
               <li>
-                <Link href="/services/postnatal-baby-care" className="hover:text-brand-teal transition-colors">Postnatal & Baby Care</Link>
+                <Link href="/services/postnatal-baby-care-coimbatore" className="hover:text-brand-teal transition-colors">Postnatal & Baby Care</Link>
               </li>
               <li>
-                <Link href="/services/nursing-services" className="hover:text-brand-teal transition-colors">Nursing Services</Link>
+                <Link href="/services/home-nursing-care-coimbatore" className="hover:text-brand-teal transition-colors">Nursing Services</Link>
               </li>
               <li>
-                <Link href="/services/physiotherapy-home" className="hover:text-brand-teal transition-colors">Physiotherapy at Home</Link>
+                <Link href="/services/physiotherapy-home-visit-coimbatore" className="hover:text-brand-teal transition-colors">Physiotherapy at Home</Link>
               </li>
             </ul>
           </div>

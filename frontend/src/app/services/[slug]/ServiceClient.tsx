@@ -22,7 +22,7 @@ function RevealText({ children, className = "" }: { children: React.ReactNode, c
   );
 }
 
-export default function ServiceClient({ service }: { service: { title: string, tamilTitle: string, shortDesc: string, longDesc: string, features: string[], pricing: { name: string, price: string }[], image: string, category: string } }) {
+export default function ServiceClient({ service }: { service: { slug: string, title: string, tamilTitle: string, shortDesc: string, longDesc: string, features: string[], pricing: { name: string, price: string }[], image: string, category: string } }) {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -60,7 +60,7 @@ export default function ServiceClient({ service }: { service: { title: string, t
                 "@type": "ListItem",
                 "position": 3,
                 "name": service.title,
-                "item": `https://aadhavhealthsupport.in/services/${service.title.toLowerCase().replace(/ /g, "-")}`
+                "item": `https://aadhavhealthsupport.in/services/${service.slug}`
               }
             ]
           })
